@@ -8,6 +8,7 @@
 	<properties>
 		<spring.version>4.0.0.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
+		<javax.persistence.version>1.0-rev-1</javax.persistence.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -27,6 +28,11 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.persistence</groupId>
+				<artifactId>persistence-api</artifactId>
+				<version>${javax.persistence.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
