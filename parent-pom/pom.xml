@@ -11,6 +11,9 @@
 		<javax.persistence.version>1.0-rev-1</javax.persistence.version>
 		<spring-data-jpa.version>1.4.2.RELEASE</spring-data-jpa.version>
 		<guava.version>15.0</guava.version>
+		<mysql-connector-java.version>5.1.6</mysql-connector-java.version>
+		<hibernate-entitymanager.version>4.3.0.Final</hibernate-entitymanager.version>
+		<hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,6 +49,21 @@
 				<artifactId>guava</artifactId>
 				<version>${guava.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql-connector-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate-entitymanager.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -68,5 +86,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
