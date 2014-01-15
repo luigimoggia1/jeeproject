@@ -75,7 +75,7 @@ public class Empresa implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@Column(name = "direccion-fiscal", length = 45)
+	@Column(name = "direccionFiscal", length = 45)
 	public String getDireccionFiscal() {
 		return this.direccionFiscal;
 	}
@@ -85,7 +85,7 @@ public class Empresa implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha-inicio-actividades", length = 19)
+	@Column(name = "fechaInicioActividades", length = 19)
 	public Date getFechaInicioActividades() {
 		return this.fechaInicioActividades;
 	}
