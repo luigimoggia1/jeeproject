@@ -44,7 +44,7 @@ public class EmpleadoIntegrationTest {
 	@Transactional
 	public void testFindAll() {
 		empleados = empleadoService.findAll();
-		assertTrue(empleados.size() == 0); 
+		assertTrue(empleados.size() == 0);
 	}
 
 	@Test
