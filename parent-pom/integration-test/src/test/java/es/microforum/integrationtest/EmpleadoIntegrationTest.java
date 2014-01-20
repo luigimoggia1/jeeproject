@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,6 +26,7 @@ import es.microforum.serviceapi.EmpleadoService;
 public class EmpleadoIntegrationTest {
 	@Autowired
 	private ApplicationContext ctx;
+	private static final Logger logger = LoggerFactory.getLogger(EmpleadoIntegrationTest.class);
 	
 	EmpleadoService empleadoService;
 	List<Empleado> empleados;
@@ -45,6 +48,7 @@ public class EmpleadoIntegrationTest {
 	public void testFindAll() {
 		empleados = empleadoService.findAll();
 		assertTrue(empleados.size() == 0);
+		logger.trace("testFindAll executed !!!");
 	}
 
 	@Test
@@ -56,6 +60,7 @@ public class EmpleadoIntegrationTest {
 		assertTrue(empleados.size() == 1);
 		Empleado empleado2 = empleadoService.findByDni(dni);
 		assertTrue(empleado.equals(empleado2));
+		logger.trace("testFindByDni executed !!!");
 	}
 
 	@Test
@@ -65,6 +70,7 @@ public class EmpleadoIntegrationTest {
 		empleadoService.addEmpleado(empleado1);
 		empleados = empleadoService.findAll();
 		assertTrue(empleados.size() == 2);
+		logger.trace("testAddEmpleado executed !!!");
 	}
 
 	@Test
@@ -75,6 +81,7 @@ public class EmpleadoIntegrationTest {
 		empleado.setDireccion(direccion);
 		empleadoService.addEmpleado(empleado);
 		assertTrue(empleadoService.findByDni(empleado.getDni()).getDireccion().equals(direccion));
+		logger.trace("testUpdateEmpleado executed !!!");
 	}
 
 	@Test
@@ -86,5 +93,6 @@ public class EmpleadoIntegrationTest {
 		empleados = empleadoService.findAll();
 		assertTrue(empleadoService.findByDni(empleado1.getDni()) == null);
 		assertTrue(empleados.size() == 1);
+		logger.trace("testDeleteEmpleado executed !!!");
 	}
 }
