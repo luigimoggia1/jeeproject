@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<spring.version>4.0.0.RELEASE</spring.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.4</junit.version>
 		<hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
 		<hibernate-entitymanager.version>3.6.8.Final</hibernate-entitymanager.version>
 		<spring-data-jpa.version>1.4.2.RELEASE</spring-data-jpa.version>
