@@ -2,6 +2,9 @@ package es.microforum.serviceapi;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import es.microforum.model.Empleado;
 
 public interface EmpleadoService {
@@ -10,4 +13,5 @@ public interface EmpleadoService {
 	public Empleado addEmpleado(Empleado empleado);
 	public Empleado updateEmpleado(Empleado empleado);
 	public void deleteEmpleado(Empleado empleado);
+	public Page<Empleado> findByNombre(String nombre, Pageable pageable);
 }

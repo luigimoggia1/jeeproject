@@ -3,6 +3,8 @@ package es.microforum.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +45,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	@Override
 	public void deleteEmpleado(Empleado empleado) {
 		empleadoRepository.delete(empleado);
+	}
+
+	@Override
+	public Page<Empleado> findByNombre(String nombre, Pageable pageable) {
+		return empleadoRepository.findByNombre(nombre, pageable);
 	}
 }
