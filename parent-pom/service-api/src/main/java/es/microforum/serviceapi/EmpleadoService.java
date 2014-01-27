@@ -14,4 +14,5 @@ public interface EmpleadoService {
 	public Empleado updateEmpleado(Empleado empleado);
 	public void deleteEmpleado(Empleado empleado);
 	public Page<Empleado> findByNombre(String nombre, Pageable pageable);
+	public Page<Empleado> findAll(Pageable pageable);
 }
