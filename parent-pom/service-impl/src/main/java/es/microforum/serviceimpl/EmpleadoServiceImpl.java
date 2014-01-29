@@ -53,7 +53,6 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 	
 	@Override
-	@Transactional(readOnly=true)
 	public Page<Empleado> findAll(Pageable pageable) {
 		return empleadoRepository.findAll(pageable);
 	}
