@@ -23,11 +23,13 @@ public class EmpresaServiceImpl implements EmpresaService {
 	EmpresaRepository empresaRepository;
 
 	@Override
+	@Transactional (readOnly=true)
 	public List<Empresa> findAll() {
 		return Lists.newArrayList(empresaRepository.findAll());
 	}
 
 	@Override
+	@Transactional (readOnly=true)
 	public Empresa findByNif(String nif) {
 		return empresaRepository.findOne(nif);
 	}
@@ -48,11 +50,13 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	@Transactional (readOnly=true)
 	public Page<Empresa> findByNombre(String nombre, Pageable pageable) {
 		return empresaRepository.findByNombre(nombre, pageable);
 	}
 
 	@Override
+	@Transactional (readOnly=true)
 	public Page<Empresa> findAll(Pageable pageable) {
 		return empresaRepository.findAll(pageable);
 	}

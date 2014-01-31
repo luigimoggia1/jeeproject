@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 
 import es.microforum.model.Empleado;
+import es.microforum.model.Empresa;
 import es.microforum.repository.EmpleadoRepository;
 import es.microforum.serviceapi.EmpleadoService;
 
@@ -23,13 +24,24 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	EmpleadoRepository empleadoRepository;
 
 	@Override
+	@Transactional (readOnly=true)
 	public List<Empleado> findAll() {
 		return Lists.newArrayList(empleadoRepository.findAll());
 	}
 
 	@Override
+	@Transactional (readOnly=true)
 	public Empleado findByDni(String dni) {
 		return empleadoRepository.findOne(dni);
+	}
+	
+	@Override
+	@Transactional (readOnly=true)
+	public Empleado findByEmpresa(String dni) {
+		Empleado empleado = empleadoRepository.findOne(dni);
+		Empresa empresa = empleado.getEmpresa();
+		empresa.getEmpleados().size();
+		return empleado;
 	}
 
 	@Override
@@ -48,11 +60,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	}
 
 	@Override
+	@Transactional (readOnly=true)
 	public Page<Empleado> findByNombre(String nombre, Pageable pageable) {
 		return empleadoRepository.findByNombre(nombre, pageable);
 	}
 	
 	@Override
+	@Transactional (readOnly=true)
 	public Page<Empleado> findAll(Pageable pageable) {
 		return empleadoRepository.findAll(pageable);
 	}
