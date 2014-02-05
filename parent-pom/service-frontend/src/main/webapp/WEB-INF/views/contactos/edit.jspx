@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" 
+     xmlns:c="http://java.sun.com/jsp/jstl/core" 
+     xmlns:spring="http://www.springframework.org/tags"
+     xmlns:form="http://www.springframework.org/tags/form"
+     version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <spring:message code="label_contact_new" var="labelContactNew"/>
+    <spring:message code="label_contact_update" var="labelContactUpdate"/>
+    <spring:message code="label_contact_first_name" var="labelContactFirstName"/>
+    <spring:message code="label_contact_last_name" var="labelContactLastName"/>
+    <spring:message code="label_contact_birth_date" var="labelContactBirthDate"/>
+    <spring:message code="label_contact_description" var="labelContactDescription"/>
+    <spring:message code="label_contact_photo" var="labelContactPhoto"/>
+    <spring:eval expression="contacto.id == null ? labelContactNew:labelContactUpdate" var="formTitle"/>
+    <script type="text/javascript">
+    $(function(){ 
+        $('#fechaNacimiento').datepicker({ 
+            dateFormat: 'yy-mm-dd',
+            changeYear: true
+        });
+        
+        $("#descripcion").ckeditor(
+            {
+                toolbar : 'Basic',
+                uiColor : '#CCCCCC'
+            }              
+        );     
+    });
+    </script>
+    <h1>${formTitle}</h1>
+    <div id="contactUpdate">
+    <form:form modelAttribute="contacto" id="contactUpdateForm" method="post" >
+        <c:if test="${not empty message}">
+            <div id="message" class="${message.type}">${message.message}</div>
+        </c:if>
+        <form:label path="nombre">
+            ${labelContactFirstName}* 
+        </form:label>
+        <form:input path="nombre" />
+        <div>
+            <form:errors path="nombre" cssClass="error" />
+        </div>
+        <p/>
+        <form:label path="apellido">
+            ${labelContactLastName}* 
+        </form:label>
+        <form:input path="apellido" />
+        <div>
+            <form:errors path="apellido" cssClass="error" />
+        </div>
+        <p/>    
+
+        <form:label path="fechaNacimiento">
+            ${labelContactBirthDate}
+        </form:label>
+        <form:input path="fechaNacimiento" id="fechaNacimiento"/>    
+        <div>
+            <form:errors path="fechaNacimiento" cssClass="error" />
+        </div>        
+        <p/>
+        
+        <form:label path="descripcion">
+            ${labelContactDescription}
+        </form:label>
+        <br/>
+        <form:textarea cols="60" rows="8" path="descripcion" id="descripcion"/>
+        <div>
+            <form:errors path="descripcion" cssClass="error" />
+        </div>        
+        <p/>            
+        
+        
+        <form:hidden path="version" />
+        
+        <button name="submit" type="submit" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <span class="ui-button-text">Save</span>
+        </button> 
+        <button name="reset" type="reset" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+            <span class="ui-button-text">Reset</span>
+        </button>           
+                      
+    </form:form>   
+    </div>
+
+</div>

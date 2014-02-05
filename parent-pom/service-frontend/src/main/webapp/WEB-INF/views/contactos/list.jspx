@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<spring:message code="label_contact_list" var="labelContactList" />
+	<spring:message code="label_contact_first_name"
+		var="labelContactFirstName" />
+	<spring:message code="label_contact_last_name"
+		var="labelContactLastName" />
+	<spring:message code="label_contact_birth_date"
+		var="labelContactBirthDate" />
+	<spring:url value="/contactos/" var="showContactUrl" />
+
+	<script type="text/javascript">
+		$(function() {
+			$("#list").jqGrid(
+					{
+						datatype : 'json',
+						mtype : 'GET',
+						colNames : [ '${labelContactFirstName}',
+								'${labelContactLastName}',
+								'${labelContactBirthDate}' ],
+						colModel : [ {
+							name : 'nombre',
+							index : 'nombre',
+							sortable : false,
+							width : 150
+						}, {
+							name : 'apellido',
+							index : 'apellido',
+							sortable : false,
+							width : 100
+						}, {
+							name : 'fechaNacimientoString',
+							index : 'fechaNacimiento',
+							sortable : false,
+							width : 100
+						} ],
+						jsonReader : {
+							root : "contactoData",
+							page : "currentPage",
+							total : "totalPages",
+							records : "totalRecords",
+							repeatitems : false,
+							id : "id"
+						},
+				        pager: '#pager',
+				        rowNum:10,
+				        rowList:[5,10,15],
+// 				        sortname: 'firstName',
+// 				        sortorder: 'asc',
+						viewrecords : true,
+						gridview : true,
+						height : 250,
+						width : 500,
+						caption : '${labelContactList}',
+						onSelectRow : function(id) {
+							document.location.href = "${showContactUrl}/" + id;
+						}
+					});
+			$("#search").click(
+					function() {
+						$("#list").jqGrid().setGridParam(
+								{
+									url : '${showContactUrl}listgrid?name='
+											+ $("#nombre").val()
+								}).trigger("reloadGrid");
+					});
+			$("#new").click(function() {
+				document.location.href = "${showContactUrl}?form";
+			});
+		});
+	</script>
+
+	<c:if test="${not empty message}">
+		<div id="message" class="${message.type}">${message.message}</div>
+	</c:if>
+
+	<h2>${labelContactList}</h2>
+	<div id="criteria">
+		<input type="text" id="nombre" />
+		<button name="search" id="search" type="new"
+			class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+			<span class="ui-button-text">Search</span>
+		</button>
+	</div>
+	<div>
+		<table id="list">
+			<tr>
+				<td />
+			</tr>
+		</table>
+	</div>
+	<div id="pager"></div>
+	<button name="new" id="new" type="search"
+		class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
+		<span class="ui-button-text">New</span>
+	</button>
+
+
+</div>
