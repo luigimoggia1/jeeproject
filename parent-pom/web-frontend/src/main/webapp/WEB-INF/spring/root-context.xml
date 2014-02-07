@@ -6,9 +6,6 @@
                         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 		
     <import resource="classpath:app-context.xml" />
-    
-    <import resource="security-context.xml"/> 
-    
-    <context:component-scan base-package="com.adlanda.prototipo"/>    
-        
+    <import resource="security-context.xml"/>
+    <context:component-scan base-package="es.microforum.prototipo"/>
 </beans>

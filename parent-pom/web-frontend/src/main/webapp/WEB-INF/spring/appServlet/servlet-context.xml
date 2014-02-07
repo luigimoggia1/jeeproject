@@ -27,7 +27,7 @@
 		resource requests to the container's default Servlet -->
 	<default-servlet-handler />
 
-	<context:component-scan base-package="com.adlanda.prototipo.web.controller" />
+	<context:component-scan base-package="es.microforum.prototipo.web.controller" />
 
 	<!-- register "global" interceptor beans to apply to all registered HandlerMappings -->
 	<interceptors>
