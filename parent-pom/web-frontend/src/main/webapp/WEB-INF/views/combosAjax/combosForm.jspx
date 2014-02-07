@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() { 
+	$('#marca').change(
+			function() {
+				$.getJSON('combosAjax/modelos', {
+					marcaValue : $(this).val(),
+					ajax : 'true'
+				}, function(data) {
+					var html = '';
+					var len = data.length;
+					for ( var i = 0; i < len; i++) {
+						html += '<option value="' + data[i] + '">'
+								+ data[i] + '</option>';
+					}
+					html += '';
+
+					$('#modelo').html(html);
+				});
+			});
+});
+//]]>
+</script>
+	
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<form:form method="post" modelAttribute="ajaxFormObject">
+		<form:select path="marca"  items="${marcas}" id="marca"/>
+		<form:select path="modelo" items="${modelos}" id="modelo" />
+		<button name="submit" type="submit">
+			<span class="ui-button-text">Submit</span>
+		</button>
+	</form:form>
+</div>
+
