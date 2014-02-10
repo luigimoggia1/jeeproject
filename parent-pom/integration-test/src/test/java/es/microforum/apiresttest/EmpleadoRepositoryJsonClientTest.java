@@ -34,14 +34,14 @@ import es.microforum.repository.EmpresaRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring-data-app-context.xml"})
-public class EmpresaRepositoryJsonClientTest {
+public class EmpleadoRepositoryJsonClientTest {
 	String jpaWebContext;
 	
 	@Autowired
 	ApplicationContext context;
 	
 	@Autowired
-	EmpresaRepository empresaRepository;
+	EmpresaRepository empleadoRepository;
 	
 	private JdbcTemplate jdbcTemplate;
 	
