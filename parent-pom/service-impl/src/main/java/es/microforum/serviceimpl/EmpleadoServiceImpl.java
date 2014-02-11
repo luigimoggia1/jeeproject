@@ -70,4 +70,15 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	public Page<Empleado> findAll(Pageable pageable) {
 		return empleadoRepository.findAll(pageable);
 	}
+
+	@Override
+	public void modificarSalario(double porcentaje) {
+		List<Empleado> empleados = findAll();
+		for (Empleado empleado : empleados) {
+			double salarioEmpleado = empleado.getSalarioAnual();
+			salarioEmpleado += (salarioEmpleado * (porcentaje / 100));
+			empleado.setSalarioAnual(salarioEmpleado);
+			updateEmpleado(empleado);
+		}
+	}
 }

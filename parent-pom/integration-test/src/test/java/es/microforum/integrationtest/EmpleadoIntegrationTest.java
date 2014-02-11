@@ -31,12 +31,14 @@ public class EmpleadoIntegrationTest {
 	EmpleadoService empleadoService;
 	List<Empleado> empleados;
 	Empleado empleado, empleado1;
+	double porcentaje;
 
 	@Before
 	public void setUp() throws Exception {
 		empleadoService = ctx.getBean("springJpaEmpleadoService", EmpleadoService.class);
 		empleado = new Empleado("77325837K");
 		empleado1 = new Empleado("77330577T");
+		porcentaje = 10;
 	}
 
 	@After
@@ -94,5 +96,16 @@ public class EmpleadoIntegrationTest {
 		assertTrue(empleadoService.findByDni(empleado1.getDni()) == null);
 		assertTrue(empleados.size() == 1);
 		logger.trace("testDeleteEmpleado executed !!!");
+	}
+	
+	@Test
+	@Transactional
+	public void testModificarSalarioEmpleado() {
+		Empleado empleado = empleadoService.findByDni("77325837K");
+		double salarioAntes = empleado.getSalarioAnual();
+		empleadoService.modificarSalario(porcentaje);
+		double salarioDespues = empleado.getSalarioAnual();
+		assertTrue(salarioDespues == (salarioAntes + (salarioAntes * (porcentaje / 100))));
+		logger.trace("testModificarSalarioEmpleado executed !!!");
 	}
 }

@@ -16,4 +16,5 @@ public interface EmpleadoService {
 	public void deleteEmpleado(Empleado empleado);
 	public Page<Empleado> findByNombre(String nombre, Pageable pageable);
 	public Page<Empleado> findAll(Pageable pageable);
+	public void modificarSalario(double porcentaje);
 }
