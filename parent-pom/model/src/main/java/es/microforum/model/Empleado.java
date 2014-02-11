@@ -2,6 +2,7 @@ package es.microforum.model;
 
 // Generated 13-ene-2014 20:02:39 by Hibernate Tools 4.0.0
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -73,7 +74,7 @@ public class Empleado implements java.io.Serializable {
 		this.version = version;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "nif")
 	public Empresa getEmpresa() {
 		return this.empresa;
