@@ -7,15 +7,15 @@ import es.microforum.serviceapi.EmpleadoService;
 
 @WebService
 public class ModificadorSalarioWebService implements IModificadorSalarioWebService {
-	private EmpleadoService empleadoService;
+	private EmpleadoService modificadorSalario;
 
 	@WebMethod(exclude=true)
-	public void setEmpleadoService(EmpleadoService empleadoService) {
-		this.empleadoService = empleadoService;
+	public void setModificadorSalario(EmpleadoService modificadorSalario) {
+		this.modificadorSalario = modificadorSalario;
 	}
 	
 	@WebMethod(operationName="callModificadorSalario")
-	public void callModificadorSalario(double porcentaje){
-		empleadoService.modificarSalario(porcentaje);
+	public void callModificadorSalario(double porcentaje) {
+		modificadorSalario.modificarSalario(porcentaje);
 	}
 }

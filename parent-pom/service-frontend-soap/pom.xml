@@ -1,10 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>es.microforum</groupId>
+	<parent>
+		<groupId>es.microforum</groupId>
+		<artifactId>parent-pom</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+	</parent>
 	<artifactId>service-frontend-soap</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.2-SNAPSHOT</version>
 	<name>service-frontend-soap</name>
 	<url>http://maven.apache.org</url>
 
@@ -27,24 +30,43 @@
 			<version>0.0.2-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
-
-		<!-- Spring framework -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-			<version>3.2.6.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>3.2.6.RELEASE</version>
-		</dependency>
+		<!-- JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
+			<scope>test</scope>
 		</dependency>
-		
+		<!-- Spring framework -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 		<!-- JAX-WS -->
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
@@ -57,24 +79,6 @@
 			<groupId>org.jvnet.jax-ws-commons.spring</groupId>
 			<artifactId>jaxws-spring</artifactId>
 			<version>1.9</version>
-			<!-- <exclusions> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.springframework</groupId> -->
-			<!-- <artifactId>spring-core</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.springframework</groupId> -->
-			<!-- <artifactId>spring-context</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>com.sun.xml.stream.buffer</groupId> -->
-			<!-- <artifactId>streambuffer</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- <exclusion> -->
-			<!-- <groupId>org.jvnet.staxex</groupId> -->
-			<!-- <artifactId>stax-ex</artifactId> -->
-			<!-- </exclusion> -->
-			<!-- </exclusions> -->
 		</dependency>
 	</dependencies>
 	
@@ -89,12 +93,6 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<!-- wsgen for web service artifact generation -->
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxws-maven-plugin</artifactId> 
-				<version>1.11</version> <executions> <execution> <id>document</id> <goals> 
-				<goal>wsgen</goal> </goals> <configuration> <sei>com.techiekernel.ws.jaxws.FooBarWebService</sei> 
-				<genWsdl>true</genWsdl> <keep>true</keep> <verbose>true</verbose> </configuration> 
-				</execution> </executions> </plugin> -->
 		</plugins>
 		<finalName>service-frontend-soap</finalName>
 	</build>

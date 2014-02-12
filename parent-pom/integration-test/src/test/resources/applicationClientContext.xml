@@ -17,7 +17,7 @@
     <bean id="jaxModificadorSalarioWebService"
 		class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
 		<property name="serviceInterface" value="es.microforum.ws.jaxws.IModificadorSalarioWebService" />
-		<property name="wsdlDocumentUrl" value="http://localhost:8081/webservice-JAX-WS-Spring/foobar?wsdl" />
+		<property name="wsdlDocumentUrl" value="http://localhost:8081/service-frontend-soap/modificadorSalario?wsdl" />
 		<property name="serviceName" value="ModificadorSalarioWebServiceService" />
 		<property name="namespaceUri" value="http://jaxws.ws.microforum.es/" />
 		<property name="portName" value="ModificadorSalarioWebServicePort" />
